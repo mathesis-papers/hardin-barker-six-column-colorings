@@ -28,9 +28,9 @@
         "name": "Wenlin Zhang"
       }
     ],
-    "concept_doi": null,
+    "concept_doi": "10.5281/zenodo.24484264",
     "current_version": 2,
-    "doi": null,
+    "doi": "10.5281/zenodo.24484265",
     "lean_source": {
       "revision": "81ea1b50693b21a1d6370aa3e18815afe5f96af2",
       "url": "https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233254TriangleStrip.lean"
