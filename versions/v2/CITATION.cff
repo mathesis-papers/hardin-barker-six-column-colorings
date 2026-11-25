@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, cite it."
+title: "Hardin and Barker's strip-coloring formulas: an extension of Britnell and Wildon's enumeration"
+authors:
+  - name: "Haobo Ma"
+  - name: "Wenlin Zhang"
+date-released: "2026-11-25"
+version: "2"
+url: "https://mathesis-omega-research.apps.chrono-ai.fun/papers/hardin-barker-six-column-colorings?version=2"
+license: "CC-BY-4.0"

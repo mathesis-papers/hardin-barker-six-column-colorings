@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 93964,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "02786de921a6960664f3889d8bb01747bb38101066424013bd76e376de6e53b6",
+      "sha256": "02786de921a6960664f3889d8bb01747bb38101066424013bd76e376de6e53b6"
+    },
+    "source": {
+      "bytes": 22474,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "d04cd7a79ccb29cd3f71ee0ab49646b077a4b2bef97ac4987eb343104444aa38",
+      "sha256": "d04cd7a79ccb29cd3f71ee0ab49646b077a4b2bef97ac4987eb343104444aa38"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "We extend Britnell and Wildon's marked-partition enumeration (2015, Proposition 8.1) to prove Colin Barker's empirical generating function in the FORMULA entry of 11 October 2018 in OEIS A233254, revision 8, for Hardin's normalized six-column arrays at every positive height, by three-color transfer. An ordered-graph normalization formula and an eight-state matrix prove its associated recurrence. The method also proves the neighboring formulas and all empirical row and column recurrences listed in Hardin's table A233256, revision 6, through seven rows or seven columns. The larger fixed-height cases use explicit finite integer-matrix identities.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": null,
+    "current_version": 2,
+    "doi": null,
+    "lean_source": {
+      "revision": "81ea1b50693b21a1d6370aa3e18815afe5f96af2",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233254TriangleStrip.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 93964,
+      "sha256": "02786de921a6960664f3889d8bb01747bb38101066424013bd76e376de6e53b6",
+      "url": "/api/v1/collected-papers/hardin-barker-six-column-colorings/files/pdf?version=2"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-25T15:01:26.753552906Z",
+    "record": "hardin-barker-six-column-colorings",
+    "repository_name": "hardin-barker-six-column-colorings",
+    "source": {
+      "bytes": 22474,
+      "sha256": "d04cd7a79ccb29cd3f71ee0ab49646b077a4b2bef97ac4987eb343104444aa38",
+      "url": "/api/v1/collected-papers/hardin-barker-six-column-colorings/files/source?version=2"
+    },
+    "title": "Hardin and Barker's strip-coloring formulas: an extension of Britnell and Wildon's enumeration",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-25T15:01:26.753552906Z",
+        "revision": "2",
+        "version": 2
+      }
+    ],
+    "work": "hardin-barker-six-column-colorings"
+  }
+}

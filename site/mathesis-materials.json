@@ -1,0 +1,11 @@
+{
+  "schema": "mathesis.materials.v1",
+  "work": "hardin-barker-six-column-colorings",
+  "version": 2,
+  "repository_url": "https://github.com/mathesis-papers/hardin-barker-six-column-colorings",
+  "site_url": "https://papers.trureturing.org/hardin-barker-six-column-colorings/",
+  "doi": null,
+  "reading": {},
+  "slides": [],
+  "visualizations": []
+}

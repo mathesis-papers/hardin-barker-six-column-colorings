@@ -1,0 +1,549 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\one}{\mathbf{1}}
+\title{Hardin and Barker's strip-coloring formulas:\\
+an extension of Britnell and Wildon's enumeration}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{16 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We extend Britnell and Wildon's marked-partition enumeration (2015,
+Proposition 8.1) to prove Colin Barker's empirical generating function in
+the FORMULA entry of 11 October 2018 in OEIS A233254, revision 8, for Hardin's
+normalized six-column arrays at every positive height, by three-color transfer.
+An ordered-graph normalization formula and an eight-state matrix prove its
+associated recurrence. The method also proves the neighboring formulas and
+all empirical row and column recurrences listed in Hardin's table A233256,
+revision 6, through seven rows or seven columns.
+The larger fixed-height cases use explicit finite integer-matrix identities.
+\end{abstract}
+
+\section{The six-column formula}
+Let $a_n$ count $n\times6$ arrays $c_{r,j}\in\{0,1,2,3,4,5\}$, with
+rows $1\le r\le n$ and columns $1\le j\le6$, subject to the following rules.
+Horizontally adjacent entries differ and do not sum to $5$; the same rule
+holds between $c_{r,j+1}$ and $c_{r+1,j}$ for $r<n$, $j<6$.
+There are no vertical or main-diagonal restrictions.
+In row-major order the first entry is $0$; each occurrence of $2$, $3$, or $4$
+has an earlier $1$, and each $3$ has an earlier $2$.
+Set $a_0=0$.
+These are Hardin's arrays in OEIS A233254 \cite{six}; Barker gave the
+empirical generating function there. The following theorem supplies a
+finite-state proof, with every matrix entry specified below.
+Transfer matrices for chromatic polynomials are standard; see
+Salas and Sokal \cite[Section 3.1]{salas}.
+Here the normalization formula and eight boundary shapes give the stated
+coefficients without a six-color first-occurrence state space.
+Britnell and Wildon \cite[Proposition 8.1 and Section 6.3]{britnell}
+previously proved the marked-partition interpretation of the one-column
+sequence cross-referenced by Hardin's table. We give an ordered-graph version
+of that enumeration and use it for the bounded-width and bounded-height
+formulas. Their one-column result is credited separately below; it is not
+a prior proof of Barker's six-column generating function.
+
+\begin{theorem}\label{thm:main}
+As an identity of formal power series over $\mathbb Q$,
+\begin{equation}\label{eq:gf}
+\sum_{n\ge1}a_nx^n=
+\frac{8x(17-7488x+974848x^2-40108032x^3)}
+{(1-64x)(1-1600x+368640x^2-21233664x^3)}.
+\end{equation}
+Consequently, for $n\ge5$,
+\begin{equation}\label{eq:rec}
+a_n=1664a_{n-1}-471040a_{n-2}+44826624a_{n-3}-1358954496a_{n-4},
+\end{equation}
+with $a_1=136$, $a_2=166400$, $a_3=220626944$, and $a_4=294517735424$.
+\end{theorem}
+
+\subsection{Removing the color normalization}
+For a finite simple graph $G$ with an ordered, nonempty vertex set of size $N$,
+write $P_G(q)$ for its number of proper colorings using $q$ available colors.
+Impose the preceding first-occurrence rules on six-colorings of its vertices,
+and exclude equal or complementary colors on every edge.
+
+\begin{lemma}\label{lem:normalization}
+The number $A(G)$ of these normalized colorings is
+\begin{equation}\label{eq:general}
+A(G)=\frac{2^N}{48}\bigl(P_G(3)+3P_G(2)+15P_G(1)\bigr).
+\end{equation}
+If $G$ is connected and bipartite with at least one edge, this becomes
+$A(G)=2^N(P_G(3)+6)/48$.
+\end{lemma}
+\begin{proof}
+Replace each color by its complementary pair $\{0,5\}$, $\{1,4\}$, or
+$\{2,3\}$. Every color restriction is exactly the assertion that the pair
+labels at the endpoints differ. Let $b_k$ count unordered partitions of the
+vertices into $k$ nonempty independent sets. Once such a partition is fixed,
+order its sets by their first vertices. Their first colors are respectively
+$0,1,2$; the other vertices each have two independent color choices in their
+assigned pair. Thus
+\[
+A(G)=2^{N-1}b_1+2^{N-2}b_2+2^{N-3}b_3.
+\]
+This is a bijection: the first-occurrence rules select exactly these pair
+names and first colors, including when fewer than three pairs occur.
+Counting proper colorings by their nonempty color classes gives
+\[
+P_G(1)=b_1,\qquad P_G(2)=2b_1+2b_2,\qquad
+P_G(3)=3b_1+6b_2+6b_3.
+\]
+Substitution proves \eqref{eq:general}. For a connected bipartite graph
+with an edge, $P_G(1)=0$ and $P_G(2)=2$.
+\end{proof}
+
+The array graph $G_n$ has the cells as vertices and exactly the horizontal
+and antidiagonal edges defined above. Each row is a path and adjacent rows
+share an antidiagonal edge, so $G_n$ is connected. Column parity is a
+bipartition. If $p_n=P_{G_n}(3)$, Lemma~\ref{lem:normalization} gives
+\begin{equation}\label{eq:anpn}
+a_n=\frac{64^n}{48}(p_n+6)\qquad(n\ge1).
+\end{equation}
+
+\subsection{The eight boundary states}
+Only columns $2,\ldots,6$ of a row constrain the next row.
+A proper three-coloring of this five-vertex path, up to permutation of the
+three labels, has one of the following eight shapes:
+\[
+01010,\ 01012,\ 01020,\ 01021,\ 01201,\ 01202,\ 01210,\ 01212.
+\]
+Here a shape is obtained by replacing labels in order of first occurrence
+by $0,1,2$. Every shape has six labeled realizations.
+For a representative $s=(s_1,\ldots,s_5)$ and a next row
+$q=(q_1,\ldots,q_6)\in\{0,1,2\}^6$, require
+\[
+q_j\ne q_{j+1},\qquad s_j\ne q_j\qquad(1\le j\le5).
+\]
+The next state is the shape of $(q_2,\ldots,q_6)$.
+Define $T_{st}$ to be the number of these rows with next state $t$.
+This definition sums over just $3^6$ words per representative and gives,
+in the displayed shape order,
+\begin{equation}\label{eq:matrix}
+T=\begin{pmatrix}
+5&5&4&4&1&1&3&3\\
+3&3&3&3&2&2&3&3\\
+4&4&4&4&1&1&3&3\\
+2&2&2&2&3&3&2&2\\
+1&1&1&1&3&3&1&1\\
+2&2&2&2&2&2&3&3\\
+3&3&3&3&1&1&3&3\\
+4&4&2&2&2&2&3&3
+\end{pmatrix}.
+\end{equation}
+For example, the first entry counts the five words
+$101010$, $102020$, $121212$, $201010$, $202020$.
+For each first-row boundary realization there are two choices for its first
+label. Thus every initial shape has weight $12$ and, with $\one$ the
+eight-dimensional column of ones,
+\begin{equation}\label{eq:pn}
+p_n=12\one^{\mathsf T}T^{n-1}\one\qquad(n\ge1).
+\end{equation}
+The row extension counts all allowable next rows and uses exactly the
+information retained in the state, so \eqref{eq:pn} follows by induction
+without a height cutoff.
+
+The finite calculation needed for the recurrence is small. Set
+$r=T\one$, $t=T^2\one$, $u=T^3\one$. Their transposes are
+\begin{align*}
+r^{\mathsf T}&=(26,22,24,18,12,18,20,22),\\
+t^{\mathsf T}&=(564,456,516,354,222,366,426,462),\\
+u^{\mathsf T}&=(11832,9510,10812,7320,4542,7620,8922,9660).
+\end{align*}
+Direct multiplication of \eqref{eq:matrix} gives
+\[
+d:=u-25t+90r-81\one=9(-1,1,-1,1,-1,1,-1,1)^{\mathsf T},
+\qquad Td=0,\quad\one^{\mathsf T}d=0.
+\]
+Hence $\one^{\mathsf T}T^m d=0$ for every $m\ge0$, including $m=0$.
+By \eqref{eq:pn},
+\[
+p_{n+3}=25p_{n+2}-90p_{n+1}+81p_n\qquad(n\ge1),
+\]
+with $(p_1,p_2,p_3)=(96,1944,40392)$. In particular,
+\begin{equation}\label{eq:pgf}
+P(z):=\sum_{n\ge1}p_nz^n=
+\frac{96z-456z^2+432z^3}{1-25z+90z^2-81z^3}.
+\end{equation}
+Finally \eqref{eq:anpn} yields
+\[
+\sum_{n\ge1}a_nx^n=\frac{P(64x)}{48}
++\frac{8x}{1-64x},
+\]
+which simplifies to \eqref{eq:gf}. Multiplying by its denominator gives
+\eqref{eq:rec} for $n\ge5$ and the four stated initial values.
+The recurrence does not hold at $n=4$ with $a_0=0$.
+This proves Theorem~\ref{thm:main}.
+
+\section{Neighboring formulas}
+Let $a_{n,w}$ count the same arrays with width $w$, and let $p_{n,w}$
+be the corresponding three-color count. For $w\ge2$ the graph is connected
+and bipartite, so
+\begin{equation}\label{eq:width}
+a_{n,w}=2^{nw}(p_{n,w}+6)/48.
+\end{equation}
+The same transfer construction uses boundaries of length $w-1$.
+For $w=2,3,4,5$, the matrices in increasing canonical-shape order are
+\[
+T_2=(4),\quad T_3=(6),\quad
+T_4=\begin{pmatrix}5&5\\4&4\end{pmatrix},\quad
+T_5=\begin{pmatrix}5&5&3&3\\4&4&3&3\\2&2&3&3\\4&4&3&3\end{pmatrix}.
+\]
+The initial weight is $6$ for the single state at width two, and $12$
+per state at the other widths. The column sums of $T_4$ are both $9$;
+also $T_5^2\one-15T_5\one+18\one=0$.
+Consequently
+\[
+p_{n,2}=6\cdot4^{n-1},\quad
+p_{n,3}=12\cdot6^{n-1},\quad
+p_{n,4}=24\cdot9^{n-1},
+\]
+and
+\[
+\sum_{n\ge1}p_{n,5}z^n=\frac{48z-72z^2}{1-15z+18z^2}.
+\]
+These explicit matrix identities, together with \eqref{eq:width}, prove
+the following corollary, including the first-occurrence normalization.
+
+\begin{corollary}
+Barker's formulas in OEIS A233251, A233252 and A233253
+\cite{three,four,five} hold for every $n\ge1$. Explicitly,
+\begin{align*}
+a_{n,3}&=8^{n-1}(6^n+3)/3,&
+\sum_{n\ge1}a_{n,3}x^n&=\frac{x(3-64x)}{(1-8x)(1-48x)},\\
+a_{n,4}&=2^{4n-3}(4\cdot9^n+9)/9,&
+\sum_{n\ge1}a_{n,4}x^n&=\frac{2x(5-208x)}{(1-16x)(1-144x)},\\
+&&\sum_{n\ge1}a_{n,5}x^n&=
+\frac{4x(9-1120x+30720x^2)}{(1-32x)(1-480x+18432x^2)}.
+\end{align*}
+Their homogeneous recurrences begin at $n=3,3,4$, respectively.
+\end{corollary}
+
+For completeness, column one of the table in A233256 \cite{table}
+has an edgeless graph. Lemma~\ref{lem:normalization} gives
+\[
+a_{n,1}=(6^n+3\cdot4^n+15\cdot2^n)/48\qquad(n\ge1).
+\]
+Thus the empirical column recurrences for widths $1$ through $6$ in
+that entry follow, with coefficient lists
+\[
+\begin{array}{c|l|c}
+w& (c_1,\ldots,c_k)\text{ in }a_{n,w}=\sum_{j=1}^k c_ja_{n-j,w}
+&\text{first }n\\\hline
+1&(12,-44,48)&4\\
+2&(20,-64)&3\\
+3&(56,-384)&3\\
+4&(160,-2304)&3\\
+5&(512,-33792,589824)&4\\
+6&(1664,-471040,44826624,-1358954496)&5
+\end{array}
+\]
+The first two row recurrences in A233256 also follow directly. For
+width $w\ge2$, a one-row graph is a path and
+$p_{1,w}=3\cdot2^{w-1}$. For a two-row graph, classify the last column
+by whether its two labels agree. Its transfer is
+$\left(\begin{smallmatrix}2&2\\1&1\end{smallmatrix}\right)$,
+with initial weights $(3,6)$; its square is three times itself.
+Therefore $p_{2,w}=8\cdot3^{w-1}$ for $w\ge2$, and
+\[
+a_{1,w}=4^w/32+2^w/8,\qquad
+a_{2,w}=12^w/18+4^w/8\qquad(w\ge2).
+\]
+Their recurrences have coefficient lists $(6,-8)$ and $(16,-48)$ and
+begin at $w=4$, as specified in the source.
+
+\subsection{The seventh column}
+The sixteen shapes of proper six-vertex paths define $T_7$ by exactly the
+row-extension rule used above. Every shape has initial weight $12$.
+Writing $\one$ for the column of sixteen ones, direct integer multiplication
+gives
+\[
+(T_7^4-42T_7^3+351T_7^2-972T_7+810I)\one=0.
+\]
+Consequently $p_{n,7}=12\one^{\mathsf T}T_7^{n-1}\one$ satisfies the
+corresponding order-four recurrence from $n=5$.
+Applying \eqref{eq:width} gives the following additional source result.
+\begin{corollary}\label{cor:seven}
+Hardin's empirical recurrence in A233255, revision 9, FORMULA \cite{seven},
+and the order-five column-seven recurrence in A233256 hold for $n\ge6$:
+\begin{align*}
+a_{n,7}={}&5504a_{n-1,7}-6438912a_{n-2,7}+2774532096a_{n-3,7}\\
+&-478351982592a_{n-4,7}+27831388078080a_{n-5,7}.
+\end{align*}
+The initial five values are $528$, $1992704$, $8050180096$,
+$32835998056448$, and $134179300927602688$.
+\end{corollary}
+The finite identity specifies its whole matrix: enumerate the proper
+words in $\{0,1,2\}^7$, retain their canonical six-letter suffixes, and
+count compatible next rows as in \eqref{eq:matrix}.
+It is checked entry by entry by the accompanying \texttt{verify.py}.
+
+\subsection{Fixed-height strips and the remaining rows}
+Fix a height $h\ge2$. A column now has no internal restrictions.
+Let $\mathcal S_h$ be all canonical words of length $h$ on at most three
+labels, in lexicographic order. Define the integer matrix $S_h$ by
+\begin{equation}\label{eq:column-matrix}
+(S_h)_{st}=\#\{q\in\{0,1,2\}^h:\ \operatorname{can}(q)=t,
+\ q_r\ne s_r\ (1\le r\le h),\quad q_r\ne s_{r+1}\ (r<h)\}.
+\end{equation}
+The two inequalities are precisely the horizontal and antidiagonal edges
+across consecutive columns. Let $\alpha_h(s)$ be $3$ for the constant
+shape and $6$ otherwise. Relabeling symmetry and induction on the number
+of columns give
+\begin{equation}\label{eq:column-count}
+p_{h,w}=\alpha_h^{\mathsf T}S_h^{w-1}\one\qquad(w\ge1).
+\end{equation}
+Although the original first-occurrence convention is row-major,
+Lemma~\ref{lem:normalization} depends on the graph, not its vertex order,
+so column transfer can be used without changing the normalization.
+For example, the states $000,001,010,011,012$ give
+\[
+S_3=\begin{pmatrix}2&2&2&2&0\\1&1&0&1&1\\1&1&0&0&0\\
+1&1&1&1&0\\0&0&0&1&1\end{pmatrix},\qquad
+\alpha_3^{\mathsf T}=(3,6,6,6,6).
+\]
+To specify the finite identities for every remaining row, put
+$g_h(z)=\sum_{j=0}^{d_h}c_{h,j}z^j$ with $c_{h,0}=1$, and define
+$g_h^*(S)=\sum_{j=0}^{d_h}c_{h,j}S^{d_h-j}$.
+The coefficient lists, in increasing degree, are
+\begin{align*}
+g_2 &: (1,-3),\quad g_3 : (1,-5,2),\quad g_4 : (1,-9,15,-6),\\
+g_5 &: (1,-16,64,-76,-17,84,-48,8),\\
+g_6 &: (1,-30,283,-1038,573,6705,-21056,27636,-17216,4128).
+\end{align*}
+For $g_7$, of degree $27$, the list is split into four consecutive blocks:
+\begin{center}\small
+\begin{tabular}{rl}
+\toprule
+Degrees & Coefficients $c_{7,j}$ in increasing degree\\\midrule
+$0$--$6$ & $1,-55,1066,-8965,19778,225541,-2020719$\\
+$7$--$13$ & $6851286,-7381301,-20655503,79401996,-80882723,-65337447,222811374$\\
+$14$--$20$ & $-135953338,-120111164,197698384,-43440564,-76879396,52839536,1810608$\\
+$21$--$27$ & $-13170096,4166800,433792,-532928,126464,-13056,512$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The matrices defined by \eqref{eq:column-matrix} satisfy the exact identities
+\begin{equation}\label{eq:annihilators}
+S_h^{t_h}g_h^*(S_h)\one=0,\qquad
+\begin{array}{c|rrrrrr}
+h&2&3&4&5&6&7\\\hline
+|\mathcal S_h|&2&5&14&41&122&365\\
+t_h&1&2&4&4&6&6
+\end{array}.
+\end{equation}
+These are finite integer identities, not prefix extrapolations.
+The supplementary checker constructs all entries using
+\eqref{eq:column-matrix}, evaluates each polynomial on $\one$, multiplies
+by $S_h$ exactly $t_h$ times, and checks every coordinate is zero.
+Thus all finite premises of \eqref{eq:annihilators} are specified without
+large matrix tables.
+
+Here is why these finite identities imply the full infinite sequences.
+Equation~\eqref{eq:column-count} and multiplication of
+\eqref{eq:annihilators} on the left by
+$\alpha_h^{\mathsf T}S_h^m$ show that $p_{h,w}$ satisfies the recurrence
+with denominator $g_h(z)$ for $w\ge d_h+t_h+1$.
+For $w\ge2$ the array graph is connected, so
+$a_{h,w}=2^{hw}(p_{h,w}+6)/48$.
+The extra constant $6$ contributes a factor $1-z$, except that
+$g_5(1)=0$ already. The exceptional first column is edgeless, with
+$a_{h,1}=2^h(3^h+3\cdot2^h+15)/48$.
+Consequently, if $F_h(x)=\sum_{w\ge1}a_{h,w}x^w$, the following denominators
+give recurrences beginning at the indicated widths:
+\begin{center}
+\begin{tabular}{cccr}
+\toprule
+Height $h$ & $R_h(z)$, with denominator $R_h(2^h x)$ & Order & First $w$\\\midrule
+2 & $(1-z)g_2(z)$ & 2 & 4\\
+3 & $(1-z)g_3(z)$ & 3 & 6\\
+4 & $(1-z)g_4(z)$ & 4 & 9\\
+5 & $g_5(z)$ & 7 & 12\\
+6 & $(1-z)g_6(z)$ & 10 & 17\\
+7 & $(1-z)g_7(z)$ & 28 & 35\\
+\bottomrule
+\end{tabular}
+\end{center}
+Specifically, if $R_h(z)=\sum_{j=0}^k r_jz^j$, then
+$a_{h,w}=-\sum_{j=1}^k r_j2^{hj}a_{h,w-j}$ on the stated range.
+The first-column correction can affect coefficients only through degree
+$k+1$; the indicated starts also respect that bound.
+
+\begin{corollary}\label{cor:rows}
+All empirical row recurrences in the FORMULA block of A233256, revision 6,
+hold on their stated ranges. In particular, Barker's formulas in A233257,
+revision 8 \cite{rowtwo}, and A233258, revision 8 \cite{rowthree},
+and Hardin's recurrence in A233259, revision 6 \cite{rowfour}, hold:
+\begin{align*}
+F_2(x)&=\frac{x(3-38x+88x^2)}{(1-4x)(1-12x)},\\
+F_3(x)&=\frac{x(11-392x+3072x^2-8192x^3+16384x^4)}
+{(1-8x)(1-40x+128x^2)},\\
+a_{4,w}&=160a_{4,w-1}-6144a_{4,w-2}+86016a_{4,w-3}
+-393216a_{4,w-4}\quad(w\ge9).
+\end{align*}
+Also $a_{2,w}=2^{2w-3}(4\cdot3^w+9)/9$ for $w>1$.
+\end{corollary}
+\begin{proof}
+The previous table gives the recurrences, including the orders $7$, $10$,
+and $28$ listed without coefficients in the source.
+For the two rational functions, \eqref{eq:column-count} gives the initial
+terms $(3,10,104)$ and $(11,136,4672,166400,6049792)$ after normalization.
+Multiplication by the stated denominators gives the displayed numerators;
+the subsequent coefficients vanish by the recurrences.
+The closed form is the two-row formula already established above.
+\end{proof}
+
+\subsection{The prior one-column result and cross-references}
+Write $b_m$ for A233162 \cite{onecolumn}. Britnell and Wildon's
+Proposition 8.1 identifies it with their $B^\dagger_{m-1}(3)$, the number
+of set partitions of $m-1$ elements into at most three blocks, with an even
+number of elements marked in each block. If
+$\left\{\begin{smallmatrix}t\\k\end{smallmatrix}\right\}$ is a Stirling
+number of the second kind, each block's parity fixes one binary choice, so
+\[
+b_m=\sum_{k=0}^3 2^{m-1-k}
+\left\{\begin{smallmatrix}m-1\\k\end{smallmatrix}\right\}.
+\]
+The $k=0$ term is interpreted as $1$ when $m=1$.
+For $m\ge2$, substitution of the elementary formulas for the first three
+Stirling numbers gives $b_m=a_{m-1,1}$ and
+\[
+b_m=\frac{2^{m-6}(90+9\cdot2^m+2\cdot3^m)}9,\qquad
+\sum_{m\ge1}b_mx^m=
+\frac{x(1-11x+35x^2-29x^3)}{(1-2x)(1-4x)(1-6x)}.
+\]
+Thus Barker's two conjectural formulas of 18 February 2018 in A233162
+are consequences of the prior 2015 enumeration; its empirical recurrence
+holds for $m\ge5$. This supplies the exact shift for column one of A233256,
+without claiming a new enumeration.
+The other two identifications cross-referenced by A233256 follow from
+the previously recorded formulas in A026244 \cite{knownwidthtwo} and
+A007582 \cite{knownrowone}: column two is A026244 at index $n-1$, because
+$a_{n,2}=16^n/32+4^n/8$; row one is A007582 at index $w-2$, for $w\ge2$,
+because $a_{1,w}=4^w/32+2^w/8$.
+For the diagonal sequence A233250 the same graph identity applies;
+no fixed-coefficient diagonal recurrence is asserted in that entry.
+
+\section{Coverage and verification}
+\begin{center}\small
+\begin{tabular}{p{0.32\linewidth}p{0.59\linewidth}}
+\toprule
+Source item & Mathematical coverage\\\midrule
+A233254, FORMULA, revision 8 & Generating function and recurrence proved for all admissible heights.\\
+A233251, FORMULA, revision 9 & Both of Barker's formulas and the recurrence proved.\\
+A233252, FORMULA, revision 8 & Both of Barker's formulas and the recurrence proved.\\
+A233253, FORMULA, revision 7 & Generating function and recurrence proved.\\
+A233255, FORMULA, revision 9 & Empirical recurrence proved for heights $n\ge6$.\\
+A233257, FORMULA, revision 8 & Both conjectural formulas and the recurrence proved.\\
+A233258, FORMULA, revision 8 & Empirical generating function and recurrence proved.\\
+A233259, FORMULA, revision 6 & Empirical recurrence proved for widths $w\ge9$.\\
+A233256, FORMULA, revision 6 & All listed columns 1--7 and rows 1--7 proved; rows 5--7 use the finite identities \eqref{eq:annihilators}.\\
+A233162, FORMULA, revision 21 & Reproved; prior proof Britnell--Wildon (2015), Proposition 8.1 and Section 6.3. Barker's later closed form and generating function follow.\\
+A233256, cross-references & Prior formulas cited; three shifted-sequence identifications proved.\\
+A233250, revision 8 & Diagonal definition covered by graph normalization; no additional conjecture is stated.\\
+\bottomrule
+\end{tabular}
+\end{center}
+The arguments above are written proofs. The accompanying \texttt{verify.py}
+enumerates the transitions, verifies the displayed integer identities, compares
+the six-column coefficients through degree $30$, and independently counts
+the literal six-color arrays through height $6$. It checks the general
+normalization formula on every simple graph with one to four vertices.
+These finite comparisons supplement the all-height proofs.
+For the extended coverage, the checker verifies the sixteen-state seventh-column
+identity, all six fixed-height vector identities through dimension $365$,
+and the resulting normalized coefficients through height $30$ or width $40$.
+The transfer construction and annihilation implication are written proofs;
+the larger matrix identities are exact finite computations.
+
+The pinned Lean file
+\href{https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233254TriangleStrip.lean}{\texttt{HardinA233254TriangleStrip.lean}}
+contains declarations in the namespace
+\texttt{D5.S3.Combinatorics.TraceAvoidingArrays.}\allowbreak
+\texttt{HardinA233254TriangleStrip}.
+Its \texttt{result} proves the denominator-multiplied identity
+\eqref{eq:gf} in $\mathbb Z[[x]]$ for its literal filtered-array count
+\texttt{a}, including $a_0=0$.
+Its \texttt{finite\_certificate} gives the exact one-row class counts and
+weighted moments for its boundary and first-occurrence flags.
+The ordered-graph normalization formula and neighboring-width arguments
+above are written proofs; they are not assertions about those two
+Lean declarations.
+The imported
+\href{https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233251TriangleStrip.lean}{three-column file}
+defines \texttt{widthNormal} and \texttt{widthLegal}, the literal
+row-major normalization and edge predicates used by \texttt{a}.
+The imported
+\href{https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233175PairStrip.lean}{pair-strip file}
+defines \texttt{allowed}, \texttt{good}, and \texttt{finish}, which track
+the earlier occurrences of labels $1$ and $2$.
+
+{\small
+\begin{thebibliography}{14}
+\setlength{\itemsep}{2pt}
+\bibitem{six} R. H. Hardin and C. Barker.
+OEIS A233254, revision 8, 11 October 2018.
+Definition by Hardin, 6 December 2013; empirical generating function
+by Barker, 11 October 2018.
+\url{https://oeis.org/A233254}.
+\bibitem{three} R. H. Hardin and C. Barker.
+OEIS A233251, revision 9, 10 October 2018.
+Conjectures in the FORMULA block signed by Barker.
+\url{https://oeis.org/A233251}.
+\bibitem{four} R. H. Hardin and C. Barker.
+OEIS A233252, revision 8, 10 October 2018.
+Conjectures in the FORMULA block signed by Barker.
+\url{https://oeis.org/A233252}.
+\bibitem{five} R. H. Hardin and C. Barker.
+OEIS A233253, revision 7, 11 October 2018.
+Empirical generating function signed by Barker.
+\url{https://oeis.org/A233253}.
+\bibitem{table} R. H. Hardin.
+OEIS A233256, revision 6, 2 June 2025.
+\url{https://oeis.org/A233256}.
+\bibitem{seven} R. H. Hardin. OEIS A233255, revision 9, 2 September 2024.
+\url{https://oeis.org/A233255}.
+\bibitem{rowtwo} R. H. Hardin and C. Barker.
+OEIS A233257, revision 8, 11 October 2018.
+\url{https://oeis.org/A233257}.
+\bibitem{rowthree} R. H. Hardin and C. Barker.
+OEIS A233258, revision 8, 11 October 2018.
+\url{https://oeis.org/A233258}.
+\bibitem{rowfour} R. H. Hardin. OEIS A233259, revision 6, 2 March 2023.
+\url{https://oeis.org/A233259}.
+\bibitem{onecolumn} R. H. Hardin and C. Barker. OEIS A233162,
+revision 21, 31 May 2024. Barker's conjectural formulas, 18 February 2018.
+\url{https://oeis.org/A233162}.
+\bibitem{knownwidthtwo} N. J. A. Sloane and contributors. OEIS A026244,
+revision 47, 9 March 2025. Closed-form definition and Paul Barry's
+generating function of 11 March 2004. \url{https://oeis.org/A026244}.
+\bibitem{knownrowone} S. Plouffe and contributors. OEIS A007582,
+revision 146, 6 November 2024. Closed-form definition and formula block.
+\url{https://oeis.org/A007582}.
+\bibitem{britnell} J. R. Britnell and M. Wildon.
+Bell numbers, partition moves and the eigenvalues of the random-to-top
+shuffle in Dynkin types A, B and D. arXiv:1507.04803v1, 16 July 2015,
+Proposition 8.1, pp. 23--24, and Section 6.3.
+\url{https://arxiv.org/abs/1507.04803v1}.
+Journal version: \emph{Journal of Combinatorial Theory, Series A}
+\textbf{148} (2017), 116--144. doi:10.1016/j.jcta.2016.12.003.
+\bibitem{salas} J. Salas and A. D. Sokal.
+Transfer Matrices and Partition-Function Zeros for Antiferromagnetic
+Potts Models. I. General Theory and Square-Lattice Chromatic Polynomial.
+\emph{Journal of Statistical Physics} \textbf{104} (2001), 609--699.
+doi:10.1023/A:1010376605067.
+\url{https://arxiv.org/abs/cond-mat/0004330v2}.
+\end{thebibliography}
+}
+\medskip\noindent
+\textbf{License.} \copyright\ 2026 Haobo Ma and Wenlin Zhang.
+Creative Commons Attribution 4.0 International (CC BY 4.0).
+\url{https://creativecommons.org/licenses/by/4.0/}.
+\end{document}

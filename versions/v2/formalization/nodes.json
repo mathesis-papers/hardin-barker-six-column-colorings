@@ -1,0 +1,199 @@
+{
+  "nodes": [
+    {
+      "attribution": null,
+      "authors": [
+        {
+          "affiliation": "ChronoAI Pte Ltd, Singapore",
+          "name": "Haobo Ma"
+        },
+        {
+          "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+          "name": "Wenlin Zhang"
+        }
+      ],
+      "claim": "s1",
+      "contributor": null,
+      "identity": "collected:hardin-barker-six-column-colorings:2:s1",
+      "kind": "paper",
+      "label": "Theorem",
+      "lean_source": {
+        "revision": "81ea1b50693b21a1d6370aa3e18815afe5f96af2",
+        "url": "https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233254TriangleStrip.lean"
+      },
+      "lineage": "collected:hardin-barker-six-column-colorings:s1",
+      "macros": {
+        "\\one": "\\mathbf{1}"
+      },
+      "next_step": "Formalization work is coordinated through the shared requests.",
+      "proof_basis": null,
+      "proof_state": "preparing",
+      "receipt": null,
+      "record": "hardin-barker-six-column-colorings",
+      "scope": "in_scope",
+      "statement": "As an identity of formal power series over $\\mathbb Q$,\n\\begin{equation}\n\\sum_{n\\ge1}a_nx^n=\n\\frac{8x(17-7488x+974848x^2-40108032x^3)}\n{(1-64x)(1-1600x+368640x^2-21233664x^3)}.\n\\end{equation}\nConsequently, for $n\\ge5$,\n\\begin{equation}\na_n=1664a_{n-1}-471040a_{n-2}+44826624a_{n-3}-1358954496a_{n-4},\n\\end{equation}\nwith $a_1=136$, $a_2=166400$, $a_3=220626944$, and $a_4=294517735424$.",
+      "status": "preparing",
+      "target_digest": null,
+      "title": "Hardin and Barker's strip-coloring formulas: an extension of Britnell and Wildon's enumeration",
+      "toolchain": null,
+      "version": 2,
+      "work": "hardin-barker-six-column-colorings"
+    },
+    {
+      "attribution": null,
+      "authors": [
+        {
+          "affiliation": "ChronoAI Pte Ltd, Singapore",
+          "name": "Haobo Ma"
+        },
+        {
+          "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+          "name": "Wenlin Zhang"
+        }
+      ],
+      "claim": "s2",
+      "contributor": null,
+      "identity": "collected:hardin-barker-six-column-colorings:2:s2",
+      "kind": "paper",
+      "label": "Lemma",
+      "lean_source": {
+        "revision": "81ea1b50693b21a1d6370aa3e18815afe5f96af2",
+        "url": "https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233254TriangleStrip.lean"
+      },
+      "lineage": "collected:hardin-barker-six-column-colorings:s2",
+      "macros": {
+        "\\one": "\\mathbf{1}"
+      },
+      "next_step": "Formalization work is coordinated through the shared requests.",
+      "proof_basis": null,
+      "proof_state": "preparing",
+      "receipt": null,
+      "record": "hardin-barker-six-column-colorings",
+      "scope": "in_scope",
+      "statement": "The number $A(G)$ of these normalized colorings is\n\\begin{equation}\nA(G)=\\frac{2^N}{48}\\bigl(P_G(3)+3P_G(2)+15P_G(1)\\bigr).\n\\end{equation}\nIf $G$ is connected and bipartite with at least one edge, this becomes\n$A(G)=2^N(P_G(3)+6)/48$.",
+      "status": "preparing",
+      "target_digest": null,
+      "title": "Hardin and Barker's strip-coloring formulas: an extension of Britnell and Wildon's enumeration",
+      "toolchain": null,
+      "version": 2,
+      "work": "hardin-barker-six-column-colorings"
+    },
+    {
+      "attribution": null,
+      "authors": [
+        {
+          "affiliation": "ChronoAI Pte Ltd, Singapore",
+          "name": "Haobo Ma"
+        },
+        {
+          "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+          "name": "Wenlin Zhang"
+        }
+      ],
+      "claim": "s3",
+      "contributor": null,
+      "identity": "collected:hardin-barker-six-column-colorings:2:s3",
+      "kind": "paper",
+      "label": "Corollary",
+      "lean_source": {
+        "revision": "81ea1b50693b21a1d6370aa3e18815afe5f96af2",
+        "url": "https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233254TriangleStrip.lean"
+      },
+      "lineage": "collected:hardin-barker-six-column-colorings:s3",
+      "macros": {
+        "\\one": "\\mathbf{1}"
+      },
+      "next_step": "Formalization work is coordinated through the shared requests.",
+      "proof_basis": null,
+      "proof_state": "preparing",
+      "receipt": null,
+      "record": "hardin-barker-six-column-colorings",
+      "scope": "in_scope",
+      "statement": "Barker's formulas in OEIS A233251, A233252 and A233253\n\\cite{three,four,five} hold for every $n\\ge1$. Explicitly,\n\\begin{align*}\na_{n,3}&=8^{n-1}(6^n+3)/3,&\n\\sum_{n\\ge1}a_{n,3}x^n&=\\frac{x(3-64x)}{(1-8x)(1-48x)},\\\\\na_{n,4}&=2^{4n-3}(4\\cdot9^n+9)/9,&\n\\sum_{n\\ge1}a_{n,4}x^n&=\\frac{2x(5-208x)}{(1-16x)(1-144x)},\\\\\n&&\\sum_{n\\ge1}a_{n,5}x^n&=\n\\frac{4x(9-1120x+30720x^2)}{(1-32x)(1-480x+18432x^2)}.\n\\end{align*}\nTheir homogeneous recurrences begin at $n=3,3,4$, respectively.",
+      "status": "preparing",
+      "target_digest": null,
+      "title": "Hardin and Barker's strip-coloring formulas: an extension of Britnell and Wildon's enumeration",
+      "toolchain": null,
+      "version": 2,
+      "work": "hardin-barker-six-column-colorings"
+    },
+    {
+      "attribution": null,
+      "authors": [
+        {
+          "affiliation": "ChronoAI Pte Ltd, Singapore",
+          "name": "Haobo Ma"
+        },
+        {
+          "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+          "name": "Wenlin Zhang"
+        }
+      ],
+      "claim": "s4",
+      "contributor": null,
+      "identity": "collected:hardin-barker-six-column-colorings:2:s4",
+      "kind": "paper",
+      "label": "Corollary",
+      "lean_source": {
+        "revision": "81ea1b50693b21a1d6370aa3e18815afe5f96af2",
+        "url": "https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233254TriangleStrip.lean"
+      },
+      "lineage": "collected:hardin-barker-six-column-colorings:s4",
+      "macros": {
+        "\\one": "\\mathbf{1}"
+      },
+      "next_step": "Formalization work is coordinated through the shared requests.",
+      "proof_basis": null,
+      "proof_state": "preparing",
+      "receipt": null,
+      "record": "hardin-barker-six-column-colorings",
+      "scope": "in_scope",
+      "statement": "Hardin's empirical recurrence in A233255, revision 9, FORMULA \\cite{seven},\nand the order-five column-seven recurrence in A233256 hold for $n\\ge6$:\n\\begin{align*}\na_{n,7}={}&5504a_{n-1,7}-6438912a_{n-2,7}+2774532096a_{n-3,7}\\\\\n&-478351982592a_{n-4,7}+27831388078080a_{n-5,7}.\n\\end{align*}\nThe initial five values are $528$, $1992704$, $8050180096$,\n$32835998056448$, and $134179300927602688$.",
+      "status": "preparing",
+      "target_digest": null,
+      "title": "Hardin and Barker's strip-coloring formulas: an extension of Britnell and Wildon's enumeration",
+      "toolchain": null,
+      "version": 2,
+      "work": "hardin-barker-six-column-colorings"
+    },
+    {
+      "attribution": null,
+      "authors": [
+        {
+          "affiliation": "ChronoAI Pte Ltd, Singapore",
+          "name": "Haobo Ma"
+        },
+        {
+          "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+          "name": "Wenlin Zhang"
+        }
+      ],
+      "claim": "s5",
+      "contributor": null,
+      "identity": "collected:hardin-barker-six-column-colorings:2:s5",
+      "kind": "paper",
+      "label": "Corollary",
+      "lean_source": {
+        "revision": "81ea1b50693b21a1d6370aa3e18815afe5f96af2",
+        "url": "https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233254TriangleStrip.lean"
+      },
+      "lineage": "collected:hardin-barker-six-column-colorings:s5",
+      "macros": {
+        "\\one": "\\mathbf{1}"
+      },
+      "next_step": "Formalization work is coordinated through the shared requests.",
+      "proof_basis": null,
+      "proof_state": "preparing",
+      "receipt": null,
+      "record": "hardin-barker-six-column-colorings",
+      "scope": "in_scope",
+      "statement": "All empirical row recurrences in the FORMULA block of A233256, revision 6,\nhold on their stated ranges. In particular, Barker's formulas in A233257,\nrevision 8 \\cite{rowtwo}, and A233258, revision 8 \\cite{rowthree},\nand Hardin's recurrence in A233259, revision 6 \\cite{rowfour}, hold:\n\\begin{align*}\nF_2(x)&=\\frac{x(3-38x+88x^2)}{(1-4x)(1-12x)},\\\\\nF_3(x)&=\\frac{x(11-392x+3072x^2-8192x^3+16384x^4)}\n{(1-8x)(1-40x+128x^2)},\\\\\na_{4,w}&=160a_{4,w-1}-6144a_{4,w-2}+86016a_{4,w-3}\n-393216a_{4,w-4}\\quad(w\\ge9).\n\\end{align*}\nAlso $a_{2,w}=2^{2w-3}(4\\cdot3^w+9)/9$ for $w>1$.",
+      "status": "preparing",
+      "target_digest": null,
+      "title": "Hardin and Barker's strip-coloring formulas: an extension of Britnell and Wildon's enumeration",
+      "toolchain": null,
+      "version": 2,
+      "work": "hardin-barker-six-column-colorings"
+    }
+  ]
+}

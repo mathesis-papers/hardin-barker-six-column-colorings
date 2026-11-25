@@ -1,0 +1,15 @@
+{
+  "id": "hardin-barker-six-column-colorings",
+  "revision": 2,
+  "problem_ids": ["hardin233254", "hardin233251", "hardin233252", "hardin233253", "hardin233255", "hardin233257", "hardin233258", "hardin233259"],
+  "topic": "Normalized complementary-pair exclusion arrays, strip generating functions, and all listed row and column recurrences through dimension seven",
+  "title": "Hardin and Barker's strip-coloring formulas: an extension of Britnell and Wildon's enumeration",
+  "creators": [
+    {"name": "Haobo Ma", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Wenlin Zhang", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "We extend Britnell and Wildon's marked-partition enumeration (2015, Proposition 8.1) to prove Colin Barker's empirical generating function in the FORMULA entry of 11 October 2018 in OEIS A233254, revision 8, for Hardin's normalized six-column arrays at every positive height, by three-color transfer. An ordered-graph normalization formula and an eight-state matrix prove its associated recurrence. The method also proves the neighboring formulas and all empirical row and column recurrences listed in Hardin's table A233256, revision 6, through seven rows or seven columns. The larger fixed-height cases use explicit finite integer-matrix identities.",
+  "summary": "An extension of Britnell and Wildon's 2015 one-column enumeration to Barker's six-column generating function and all row and column recurrences listed in A233256 through dimension seven. Exact transfer identities also prove the seventh-column recurrence, the two- and three-row generating functions, and the higher fixed-height recurrences. The one-column formulas in A233162 are credited as consequences of the prior enumeration. The graph normalization and transfer implications are written proofs; integer-vector identities through dimension 365 are finite computations. In the pinned Lean file, HardinA233254TriangleStrip.result proves the denominator-multiplied six-column identity, and finite_certificate gives its one-row class counts and moments.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233254TriangleStrip.lean"
+}
