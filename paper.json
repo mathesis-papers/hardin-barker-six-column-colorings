@@ -31,6 +31,7 @@
     "concept_doi": "10.5281/zenodo.24484264",
     "current_version": 2,
     "doi": "10.5281/zenodo.24484265",
+    "kind": "note",
     "lean_source": {
       "revision": "81ea1b50693b21a1d6370aa3e18815afe5f96af2",
       "url": "https://github.com/the-omega-institute/trureturing/blob/81ea1b50693b21a1d6370aa3e18815afe5f96af2/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA233254TriangleStrip.lean"
@@ -55,10 +56,12 @@
     "title": "Hardin and Barker's strip-coloring formulas: an extension of Britnell and Wildon's enumeration",
     "versions": [
       {
+        "changelog": null,
         "previous_version": null,
         "published_on": "2026-11-25T15:01:26.753552906Z",
         "revision": "2",
-        "version": 2
+        "version": 2,
+        "version_label": null
       }
     ],
     "work": "hardin-barker-six-column-colorings"
